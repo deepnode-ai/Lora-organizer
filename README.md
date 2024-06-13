@@ -6,9 +6,15 @@ This web application, built using Streamlit, serves as an interactive platform f
 
 
 ### Use Cases:
-Ideal for artists, photographers, and digital asset managers who need an efficient way to catalog and retrieve visual resources.
-Useful in settings where quick visual identification and access to image details are required, such as digital libraries, content management systems, or collaborative creative projects.
 
+- Developers and AI Artists: Tailored for professionals who need a streamlined way to manage and visually navigate AI models and digital assets within the ComfyUI platform.
+
+#### Key Benefits:
+
+- Visual Model Management: Provides a visual interface to quickly identify and access various types of models like Lora files and checkpoints.
+- Ease of Navigation: Simplifies the process of locating and selecting models, enhancing productivity and efficiency in development and creative tasks.
+- Seamless Integration: Integrates smoothly with the ComfyUI environment, making it an essential tool for existing users.
+  
 ### Technical Stack:
 Frontend: Streamlit
 Image Processing: PIL (Python Imaging Library)
