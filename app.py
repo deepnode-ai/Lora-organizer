@@ -11,31 +11,30 @@ loras_path = os.path.join(script_dir, 'loras')
 # Function to recursively load images from 'loras' and its subdirectories
 def load_images(directory):
     images = []
-    print(f"Attempting to load images from directory: {directory}")
     if not os.path.exists(directory):
         print(f"Directory not found: {directory}")
         return images
     for root, dirs, files in os.walk(directory):
         for filename in files:
             if filename.endswith(".jpeg"):  # Target specific image file extensions
-                base_name = os.path.splitext(filename)[0]  # Get the base name without extension
-                lora_file = base_name + '.safetensors'  # Assume the lora file has the same base name
                 image_path = os.path.join(root, filename)
-                lora_path = os.path.join(root, lora_file)
-                images.append((filename, image_path, lora_path))
+                images.append((filename, image_path))
     return images
 
 # Function to display images in a grid
 def display_images(images):
-    cols_per_row = 4  # Number of images per row
+    target_size = (300, 400)  # Set the target size of each image
+    cols_per_row = 4
     cols = st.columns(cols_per_row)
-    for idx, (filename, image_path, lora_path) in enumerate(images):
+    for idx, (filename, image_path) in enumerate(images):
         with cols[idx % cols_per_row]:
             image = Image.open(image_path)
-            image.thumbnail((200, 200))
+            # Resize and crop the image to fit the target size
+            image.thumbnail(target_size, Image.LANCZOS)  # Resize image maintaining aspect ratio
+            image = image.crop((0, 0, target_size[0], target_size[1]))  # Crop to fix the size
             st.image(image, caption=filename, use_column_width=True)
             if st.button(f"Add lora", key=filename):
-                display_name = os.path.splitext(lora_path)[0]
+                display_name = os.path.splitext(image_path)[0]
                 lora_display_name = f"<{display_name}:1.0>"
                 st.session_state['lora_display_name'] = lora_display_name
                 st.session_state['show_details'] = True
