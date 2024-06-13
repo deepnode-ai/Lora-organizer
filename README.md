@@ -16,3 +16,20 @@ Data Management: Python (os, sys libraries for directory and file management)
 Styling: External CSS for layout and responsive design adjustments.
 
 #### This application not only simplifies the process of image management but also enhances accessibility and interaction through its user-centric design.
+
+## Preparing the Application
+### Structure:
+Ensure your project directory is structured as follows:
+```
+ComfyUI/
+├── models/
+│   └── app.py        # Your Streamlit application
+|   └── style.css         # CSS file for styling (if you have external CSS)
+└── ...               # Other directories and files as needed
+```
+
+### Launch Streamlit:
+Run the Streamlit application by navigating to the models folder and running app.py.
+```
+streamlit run app.py
+```
