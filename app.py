@@ -38,7 +38,7 @@ def display_images(images):
             image = Image.open(image_path)
             image.thumbnail(target_size, Image.LANCZOS)
             image = image.crop((0, 0, target_size[0], target_size[1]))
-            st.image(image, caption=filename, use_column_width=True)
+            st.image(image, use_column_width=True)
 
             # Button to open the expander (acts like a popup)
             modal = Modal(key=f"modal_{idx}", title="Lora Details")
