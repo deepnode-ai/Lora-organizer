@@ -1,14 +1,21 @@
 import os
 from PIL import Image
 import streamlit as st
+from streamlit_navigation_bar import st_navbar
+
+def get_subfolders(directory):
+    """Return a list of subdirectories in the given directory."""
+    return [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d))]
 
 # Determine the directory of the currently executing script
 script_dir = os.path.dirname(os.path.realpath(__file__))
-
-# Path to the 'loras' directory
 loras_path = os.path.join(script_dir, 'loras')
 
-# Function to recursively load images from 'loras' and its subdirectories
+# Setup sidebar for navigation based only on subfolders
+#st.sidebar.title('Navigation')
+subfolders = get_subfolders(loras_path)
+#choice = st.sidebar.radio('Select Lora Folder', subfolders)
+
 def load_images(directory):
     images = []
     if not os.path.exists(directory):
@@ -16,12 +23,11 @@ def load_images(directory):
         return images
     for root, dirs, files in os.walk(directory):
         for filename in files:
-            if filename.endswith(".jpeg"):  # Target specific image file extensions
+            if filename.endswith(".jpeg"):
                 image_path = os.path.join(root, filename)
                 images.append((filename, image_path))
     return images
 
-# Function to display images in a grid
 def display_images(images):
     target_size = (300, 400)  # Set the target size of each image
     cols_per_row = 4
@@ -40,22 +46,17 @@ def display_images(images):
                 st.session_state['show_details'] = True
 
 # Navigation setup
-st.sidebar.title('Navigation')
-choice = st.sidebar.radio('Go to', ['Home', 'Lora', 'Checkpoint'])
+subfolders = get_subfolders(loras_path)
+page = st_navbar(subfolders)
+st.write(f"You selected: {page}")
 
-if choice == 'Home':
-    st.header('Home')
-    st.write('Welcome to the Home Page!')
-elif choice == 'Lora':
-    st.header('Lora Files')
-    images = load_images(loras_path)
+# Now handle the display based on `page`
+if page:
+    st.header(f'{page} Files')
+    folder_path = os.path.join(loras_path, page)
+    images = load_images(folder_path)
     display_images(images)
-    st.write('Manage your Lora here.')
-elif choice == 'Checkpoint':
-    st.header('Checkpoint')
-    images = load_images('checkpoints')
-    display_images(images)
-    st.write('Manage your checkpoints here.')
+    st.write(f'Manage your Lora in {page}.')
 
 # Display lora file name in popup
 if 'show_details' in st.session_state and st.session_state.show_details:
