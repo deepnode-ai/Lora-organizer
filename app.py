@@ -2,6 +2,7 @@ import os
 from PIL import Image
 import streamlit as st
 from streamlit_navigation_bar import st_navbar
+from streamlit_modal import Modal
 
 def get_subfolders(directory):
     """Return a list of subdirectories in the given directory."""
@@ -35,15 +36,23 @@ def display_images(images):
     for idx, (filename, image_path) in enumerate(images):
         with cols[idx % cols_per_row]:
             image = Image.open(image_path)
-            # Resize and crop the image to fit the target size
-            image.thumbnail(target_size, Image.LANCZOS)  # Resize image maintaining aspect ratio
-            image = image.crop((0, 0, target_size[0], target_size[1]))  # Crop to fix the size
+            image.thumbnail(target_size, Image.LANCZOS)
+            image = image.crop((0, 0, target_size[0], target_size[1]))
             st.image(image, caption=filename, use_column_width=True)
-            if st.button(f"Add lora", key=filename):
-                display_name = os.path.splitext(image_path)[0]
-                lora_display_name = f"<{display_name}:1.0>"
-                st.session_state['lora_display_name'] = lora_display_name
-                st.session_state['show_details'] = True
+
+            # Button to open the expander (acts like a popup)
+            modal = Modal(key=f"modal_{idx}", title="Lora Details")
+            open_modal = st.button(label='Add lora', key=f"button_{idx}")
+            if open_modal:
+                with modal.container():
+
+                   # Extract relative path from the loras_path and remove the file extension
+                    relative_path = os.path.relpath(image_path, start=loras_path)
+                    display_name = os.path.splitext(relative_path)[0]  # Remove file extension
+                    lora_display_name = f"`<lora:{display_name}:1.0>`"
+                    st.markdown(f"**WildcardEncode:** {lora_display_name}")
+                    st.session_state['lora_display_name'] = lora_display_name
+                    st.session_state['show_details'] = True
 
 # Navigation setup
 subfolders = get_subfolders(loras_path)
