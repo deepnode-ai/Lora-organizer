@@ -4,7 +4,7 @@ simple app for displaying models images stored in the Models directory and subdi
 #### Key Benefits:
 
 - Developers and AI Artists who need a streamlined way to navigate visually AI models and digital assets in models in ComfyUI.
-- Wildcard encode tag with the model name and weight to post in the wildcard encosde prompt area 
+- Wildcard encode tag with the model name and weight to post in the wildcard encosde prompt area `Add Lora`
 
 
 ## Preparing the Application
