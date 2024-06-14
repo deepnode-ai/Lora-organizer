@@ -7,7 +7,7 @@ This web application, built using Streamlit, serves as an interactive platform f
 
 ### Use Cases:
 
-- Developers and AI Artists: Tailored for professionals who need a streamlined way to manage and visually navigate AI models and digital assets within the ComfyUI platform.
+- Developers and AI Artists: Tailored for professionals who need a streamlined way to manage and visually navigate AI models and digital assets
 
 #### Key Benefits:
 
