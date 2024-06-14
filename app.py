@@ -5,8 +5,9 @@ from streamlit_navigation_bar import st_navbar
 from streamlit_modal import Modal
 
 def get_subfolders(directory):
-    """Return a list of subdirectories in the given directory."""
-    return [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d))]
+    """Return a list of subdirectories in the given directory, excluding specified folders."""
+    exclude_folders = ["IPA - LCM", "Example Folder"]  # Add more folder names to exclude as needed
+    return [d for d in os.listdir(directory) if os.path.isdir(os.path.join(directory, d)) and d not in exclude_folders]
 
 # Determine the directory of the currently executing script
 script_dir = os.path.dirname(os.path.realpath(__file__))
