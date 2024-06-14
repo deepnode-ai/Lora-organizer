@@ -30,7 +30,6 @@ Ensure your project directory is structured as follows:
 ComfyUI/
 ├── models/
 │   └── app.py        # Your Streamlit application
-|   └── style.css         # CSS file for styling (if you have external CSS)
 └── ...               # Other directories and files as needed
 ```
 
