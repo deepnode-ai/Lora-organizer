@@ -11,11 +11,12 @@ def get_subfolders(directory):
 # Determine the directory of the currently executing script
 script_dir = os.path.dirname(os.path.realpath(__file__))
 loras_path = os.path.join(script_dir, 'loras')
-
-# Setup sidebar for navigation based only on subfolders
-#st.sidebar.title('Navigation')
 subfolders = get_subfolders(loras_path)
-#choice = st.sidebar.radio('Select Lora Folder', subfolders)
+
+# Navigation setup
+subfolders = get_subfolders(loras_path)
+page = st_navbar(subfolders)
+st.write(f"You selected: {page}")
 
 def load_images(directory):
     images = []
@@ -54,10 +55,6 @@ def display_images(images):
                     st.session_state['lora_display_name'] = lora_display_name
                     st.session_state['show_details'] = True
 
-# Navigation setup
-subfolders = get_subfolders(loras_path)
-page = st_navbar(subfolders)
-st.write(f"You selected: {page}")
 
 # Now handle the display based on `page`
 if page:
