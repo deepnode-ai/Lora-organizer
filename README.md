@@ -39,6 +39,10 @@ Run the Streamlit application by navigating to the models folder and running app
 ```
 streamlit run app.py
 ```
+![image](https://github.com/deepnode-ai/Models-organizer/assets/93272190/3f3071ac-9ac8-4479-8e8d-07261ce15089)
 
-![image](https://github.com/deepnode-ai/Models-organizer/assets/93272190/b27d50eb-3c4c-40d8-8cdb-3766d69d527d)
+![image](https://github.com/deepnode-ai/Models-organizer/assets/93272190/49a3ea91-a6cc-4e9d-b61c-d05d29aa6bdd)
+
+
+
 
