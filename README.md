@@ -38,6 +38,11 @@ Run the Streamlit application by navigating to the models folder and running app
 ```
 streamlit run app.py
 ```
+or
+use `steamlit-dy.sh` to run the app after editing env variables
+```
+./steamlit-dy.sh
+```
 ![image](https://github.com/deepnode-ai/Models-organizer/assets/93272190/3f3071ac-9ac8-4479-8e8d-07261ce15089)
 
 ![image](https://github.com/deepnode-ai/Models-organizer/assets/93272190/49a3ea91-a6cc-4e9d-b61c-d05d29aa6bdd)
