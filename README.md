@@ -1,4 +1,4 @@
-# Models-organizer
+# Lora Organizer
 simple app for displaying models images stored in the Models directory and subdirectories - similar to what A1111 application has.
 
 #### Key Benefits:
