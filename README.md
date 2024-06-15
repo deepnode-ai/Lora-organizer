@@ -30,7 +30,7 @@ use `steamlit-dy.sh` to run the app after editing env variables
 ```
 ---
 
-![image](https://github.com/deepnode-ai/Models-organizer/assets/93272190/3f3071ac-9ac8-4479-8e8d-07261ce15089)
+![image](https://github.com/deepnode-ai/Models-organizer/assets/93272190/98e5986a-9177-449d-a05c-d4b6138a276f)
 
 ---
 
